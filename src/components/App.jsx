@@ -1,16 +1,31 @@
 
-import ContactForm from 'components/ContactForm/ContactForm';
-import ContactList from "./ContactList/ContactList";
-import Filter from "components/Filter/Filter";
-import { Phonebook, MainTitle, SubTitle } from "./App.styled";
+// import ContactForm from 'components/ContactForm/ContactForm';
+// import Filter from "components/Filter/Filter";
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { getError, getIsLoading } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { fetchContacts } from 'redux/contacts/operations';
+// import { getError, getIsLoading } from 'redux/contacts/selectors';
+import { ROUTES } from 'utils/routes';
+// import { MainTitle, Phonebook, SubTitle } from "./App.styled";
+// import ContactList from "./ContactList/ContactList";
+// import { Header } from './Header/Header';
+import Contacts from './pages/Contacts';
+import HomePage from './pages/HomePage';
+import Login from './pages/Login';
+import Register from './pages/Register/Register';
+import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+
+// const TITLES = {
+//   form: 'iPhoneBook &#63743;',
+//   contacts: 'Contacts',
+// }
 
 export function App () {
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  // const isLoading = useSelector(getIsLoading);
+  // const error = useSelector(getError);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,15 +33,48 @@ export function App () {
   }, [dispatch]);
 
     return (
-      <Phonebook>
-        <MainTitle>iPhoneBook &#63743;</MainTitle>
-        <ContactForm/>
-        <SubTitle>Contacts</SubTitle>
-        <Filter/>
-        {isLoading && <p>Loading</p>}
-        {error && <p>{error}</p>}
-        <ContactList/>
-      </Phonebook>
+
+      <Routes>
+      <Route path={ROUTES.HOME} element={<SharedLayout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path={ROUTES.REGISTER}
+          element={
+            <RestrictedRoute 
+            redirectTo={ROUTES.CONTACTS} 
+            component={<Register />} />
+          }
+        />
+
+        <Route
+          path={ROUTES.LOGIN}
+          element={
+            <RestrictedRoute 
+            redirectTo={ROUTES.CONTACTS} 
+            component={<Login />} />
+          }
+        />
+        <Route
+          path={ROUTES.CONTACTS}
+          element={
+            <PrivateRoute 
+            redirectTo={ROUTES.LOGIN} 
+            component={<Contacts />} />
+          }
+        />
+      </Route>
+    </Routes>
+
+      // <Phonebook>
+      //   <Header/>
+      //   <MainTitle title={TITLES.form} />
+      //   <ContactForm/>
+      //   <SubTitle title={TITLES.contacts}/>
+      //   <Filter/>
+      //   {isLoading && <p>Loading</p>}
+      //   {error && <p>{error}</p>}
+      //   <ContactList/>
+      // </Phonebook>
     );
     }
   

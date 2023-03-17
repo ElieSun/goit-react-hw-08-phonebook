@@ -1,10 +1,10 @@
 import ContactListItem from "components/ContactListItem/ContactListItem";
 import { List, Item } from "components/ContactList/ContactList.styled";
 import { useSelector, useDispatch } from "react-redux";
-import { getFilteredContacts } from "redux/selectors";
-import { getError, getIsLoading } from 'redux/selectors';
+import { getFilteredContacts } from "redux/contacts/selectors";
+import { getError, getIsLoading } from 'redux/contacts/selectors';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/operations';
 
 export default function ContactList() {
     const contacts = useSelector(getFilteredContacts);
