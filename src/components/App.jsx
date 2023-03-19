@@ -1,10 +1,10 @@
 
 // import ContactForm from 'components/ContactForm/ContactForm';
 // import Filter from "components/Filter/Filter";
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-// import { refreshUser } from 'redux/auth/operations';
+import { refreshUser } from 'redux/auth/operations';
 // import { fetchContacts } from 'redux/contacts/operations';
 // import { getError, getIsLoading } from 'redux/contacts/selectors';
 import { ROUTES } from 'utils/routes';
@@ -29,14 +29,12 @@ export function App () {
   // const isLoading = useSelector(getIsLoading);
   // const error = useSelector(getError);
 
-/*
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(refreshUser());
-    dispatch(fetchContacts());
+    // dispatch(fetchContacts());
   }, [dispatch]);
-*/
 
     return (
     
