@@ -22,9 +22,9 @@ export default function ContactList() {
       <List>
         {contacts.map((contact) => {
           return (
-            <Item key={contact.id} >
+            <Item className="contact-list" key={contact.id} >
               <ContactListItem contact={contact} />
-              </Item>
+            </Item>
           );
         })}
       </List>

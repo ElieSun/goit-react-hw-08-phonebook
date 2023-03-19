@@ -7,7 +7,6 @@ import css from 'components/Header/Header.module.css';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from 'utils/routes';
 import { useDispatch } from 'react-redux';
-import { Button } from 'components/ContactListItem/ContactListItem.styled';
 import { logOut } from 'redux/auth/operations';
 
 export const Header = () => {
@@ -16,18 +15,16 @@ export const Header = () => {
 
   return (
     <header className={css.header} >
-      <nav>
-        <NavLink to={ROUTES.HOME}>Home</NavLink>
+      <nav className='nav-main-link'>
+        <NavLink to={ROUTES.HOME}><p style={{paddingRight: 30}}>Home</p></NavLink>
+        {isLoggedIn ? <NavLink to={ROUTES.CONTACTS}>Contacts</NavLink> : ''}
       </nav>
       {isLoggedIn ? (
-        <div>
-          <NavLink to={ROUTES.CONTACTS}>Contacts</NavLink>
-          <div>
-            <p>Welcome, {user.name}</p>
-            <Button type="button" onClick={ () => dispatch( logOut() ) } >
-              Logout
-            </Button>
-          </div>
+        <div className="nav-user-auth">
+          <p className='nav-user-name'>Welcome, {user.name}</p>
+          <NavLink type="button" onClick={ () => dispatch( logOut() ) } >
+            Logout
+          </NavLink>
         </div>
       ) : (
         <div className={css.auth}>

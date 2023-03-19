@@ -8,7 +8,7 @@ export const SharedLayout = () => {
     <>
       <Header />
       <Suspense fallback={null}>
-        <main style={{padding: '60px 20px'}}>
+        <main className='mainContainer' >
           <Outlet />
         </main>
       </Suspense>

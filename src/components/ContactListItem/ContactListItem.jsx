@@ -11,11 +11,10 @@ export default function ContactListItem({ contact }) {
       <>
         <Item>
           {contact.name}: {contact.number}{' '}
-        
+        </Item>
         <Button type="button" onClick={handleDeleteContact}>
           Delete
         </Button>
-        </Item>
       </>
     );
   }

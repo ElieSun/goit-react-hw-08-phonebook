@@ -19,7 +19,7 @@ import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import NotFound from './pages/NotFound';
-
+import './App.css'
 // const TITLES = {
 //   form: 'iPhoneBook &#63743;',
 //   contacts: 'Contacts',

@@ -6,9 +6,9 @@ import Filter from "components/Filter/Filter";
 export const Contacts = () => {
   return ( 
     <>
-      <ContactForm/>
-      <Filter/>
-      <ContactList/>
+        <ContactForm/>
+        <Filter/>
+        <ContactList/>
     </>
   )
 };
