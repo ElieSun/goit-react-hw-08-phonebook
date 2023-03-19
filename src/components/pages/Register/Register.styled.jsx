@@ -9,7 +9,7 @@ margin: 0 auto;
 `;
 
 export const Wrapper = styled.div`
-pos ition: raletive;
+    position: raletive;
 `;
 
 export const Label = styled.label`

@@ -2,24 +2,28 @@ import { Button } from 'components/ContactListItem/ContactListItem.styled';
 import { Input } from 'components/Filter/Filter.styled';
 import { Form, Label, Wrapper } from 'components/pages/Register/Register.styled';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 
 
 const Register = () => {
   
     const [name, setName] = useState('');
-    const [mail, setMail] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+ 
+    const dispatch = useDispatch(); 
 
     const reset = () => {
       setName('');
-      setMail('');
+      setEmail('');
       setPassword('');
     };
     
 
 const handleSignUp = (e) => {
     e.preventDefault();
-    console.log (name, mail, password);
+    dispatch(register({name, email, password}));
     reset();
   }
   return (
@@ -42,9 +46,9 @@ const handleSignUp = (e) => {
                 <Input 
                 type="email" 
                 name="email" 
-                value={mail}
+                value={email}
                 onChange={(e) => { 
-                  setMail (e.target.value)}}/>
+                  setEmail (e.target.value)}}/>
             </Label>
           </Wrapper>
 
@@ -59,7 +63,7 @@ const handleSignUp = (e) => {
                   setPassword (e.target.value)}}/>
             </Label>
           </Wrapper>   
-          <Button type='submit'>Sign Up</Button>
+          <Button type='submit' disabled={ !name || !email || !password}>Sign Up</Button>
       </Form>
   )
 };

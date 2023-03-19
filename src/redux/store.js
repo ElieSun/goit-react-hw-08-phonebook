@@ -30,9 +30,9 @@ const authPersistConfig = {
 
 
 const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authReducer),
   contacts: contactsReducer,
   filter: filterReducer,
-  auth: persistReducer(authPersistConfig, authReducer), 
 });
 
 export const store = configureStore({

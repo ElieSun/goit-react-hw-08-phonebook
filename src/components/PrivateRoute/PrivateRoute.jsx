@@ -13,5 +13,5 @@ export const PrivateRoute = ({
  }) => {
   const { isLoggedIn } = useAuth();
  
-  return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
+  return isLoggedIn ? Component : <Navigate to={redirectTo} />;
 };

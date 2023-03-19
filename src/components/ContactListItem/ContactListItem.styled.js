@@ -21,4 +21,6 @@ export const Button = styled.button`
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    width: 300px;
+    height: 45px;
 `;
